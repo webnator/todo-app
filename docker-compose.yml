@@ -1,4 +1,3 @@
-version: '3'
 services:
   postgres:
     image: postgres:latest
@@ -13,9 +12,9 @@ services:
       - ./postgres-data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U myuser -d mydb"]
-      interval: 30s
+      interval: 5s
       timeout: 30s
-      retries: 10
+      retries: 100
 
   server:
     build:
@@ -25,7 +24,17 @@ services:
     ports:
       - "8080:8080"
     environment:
+      ENV: LOCAL
+      SERVER_PORT: 8080
+      SERVER_HOST: 0.0.0.0
+      LOG_LEVEL: debug
       DB_HOST: postgres
+      DB_PASSWORD: mypassword
+      DB_USERNAME: myuser
+      DB_DATABASE: mydb
+      ENCRYPTION_KEY: c7268529e6371dd21f02e786a56c67196d6e83388f9331f1d0e5e1344a255d8f
+      ENCRYPTION_IV: 1ae14e567ac97367de31a21a8cda8e37
+      PUBLIC_URL: http://localhost:8080
     depends_on:
       postgres:
         condition: service_healthy
@@ -38,7 +47,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NODE_ENV=production
+      REACT_APP_SERVER_URL: http://localhost:8080
+      REACT_APP_SERVER_SOCKET_URL: ws://127.0.0.1:8080
     depends_on:
       - server
 
