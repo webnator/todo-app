@@ -11,6 +11,7 @@ I've seen sometimes a small issue while initializing the database, so, if you ge
 - Go into the `/server` folder and do `npm i && npm run dev` to start the server
 - In another terminal or tab go into the `/base-front` folder and do `npm i && npm run dev` to start the frontend
 - Access `http://localhost:3000` to start using the app in your browser
+- Or, run `npm run package` to generate an electron app and run it from there
 
 ## How to run the unit tests
 - For the front, go into the `/base-front` folder and execute `npm i && npm run test`
