@@ -2,7 +2,7 @@
 This is a multi-user task tracking app, where users can create and share collaborative to-do lists, and keep track of the status of tasks, and changes made to it
 
 ## How to use it?
-Simplest way, just run `docker-compose up -d` in the root folder and access `http://localhost:3000` to start using the app in your browser.
+Simplest way, just run `docker-compose up` in the root folder and access `http://localhost:3000` to start using the app in your browser.
 
 I've seen sometimes a small issue while initializing the database, so, if you get errors the first time, terminate the process (ctrl+c) and launch the command again. That should do it.
 
