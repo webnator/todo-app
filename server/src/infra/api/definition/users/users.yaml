@@ -1,0 +1,49 @@
+login:
+  summary: Endpoint to login using a user code 
+  post:
+    summary: Logs in an user with a code
+    x-eov-operation-handler: user.entrypoint
+    operationId: userCodeLogin
+    tags:
+      - users
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "schemas/userLogin.yaml"
+              - required:
+                - code
+    responses:
+      201:
+        $ref: "../users/responses/userLogin.response.yaml"
+      403:
+        $ref: "../base/responses/403.yaml"
+      500:
+        $ref: "../base/responses/500.yaml"
+
+publicUsers:
+  summary: Public endpoints to create users
+  post:
+    summary: Registers an user
+    x-eov-operation-handler: user.entrypoint
+    operationId: createUser
+    tags:
+      - users
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "schemas/user.yaml"
+              - required:
+                - fullName
+    responses:
+      201:
+        $ref: "../users/responses/user.response.yaml"
+      403:
+        $ref: "../base/responses/403.yaml"
+      500:
+        $ref: "../base/responses/500.yaml"

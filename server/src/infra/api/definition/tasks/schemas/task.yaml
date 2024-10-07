@@ -1,0 +1,43 @@
+type: object
+description: The task entity
+properties:
+  id:
+    type: number
+    readOnly: true
+  user:
+    $ref: "../../users/schemas/publicUser.yaml"
+  sharedKey:
+    type: string
+    description: The id of the list that this task belongs to
+    example: DSTE2525
+    readOnly: true
+  title:
+    type: string
+    description: The name of the task
+    example: Paint garage door
+  description: 
+    type: string
+    description: The description of the task
+    example: I don't know what you want me to say? Paint the door, that's it!
+  status:
+    type: string
+    enum: [ 'PENDING', 'ONGOING', 'DONE' ]
+    description: The current status of the task
+    example: PENDING
+  allowedTransitions:
+    type: array
+    items: 
+      type: string
+      enum: [ 'PENDING', 'ONGOING', 'DONE' ]
+      description: The current status of the task
+    example: ['ONGOING']
+    readOnly: true
+  createdAt:
+    type: string
+    format: date-time
+    readOnly: true
+  updatedAt:
+    type: string
+    format: date-time
+    readOnly: true
+    

@@ -1,0 +1,22 @@
+type: object
+description: The list entity
+properties:
+  id:
+    type: number
+    readOnly: true
+  user:
+    $ref: "../../users/schemas/publicUser.yaml"  
+  name:
+    type: string
+    description: The name for the list
+    example: Things to fix at home
+  sharedKey:
+    type: string
+    description: The key to share the list with other users
+    example: mr-male-red-cobra
+    readOnly: true
+  createdAt:
+    type: string
+    format: date-time
+    readOnly: true
+    

@@ -1,0 +1,5 @@
+description: Entity created
+content:
+  application/json:
+    schema:
+      $ref: "../schemas/apiResult.yaml"

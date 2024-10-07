@@ -1,0 +1,82 @@
+lists:
+  summary: Endpoints to manage lists
+  post:
+    security:
+      - BearerAuth: []
+    summary: Creates a new list for a user
+    x-eov-operation-handler: list.entrypoint
+    operationId: createNewList
+    tags:
+      - lists
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "schemas/list.yaml"
+    responses:
+      201:
+        $ref: "../lists/responses/list.response.yaml"
+      400:
+        $ref: "../base/responses/400.yaml"
+      403:
+        $ref: "../base/responses/403.yaml"
+      409:
+        $ref: "../base/responses/409.yaml"
+      500:
+        $ref: "../base/responses/500.yaml"
+
+list:
+  summary: Endpoints to manage a specific list
+  parameters:
+  - in: path
+    name: sharedKey
+    schema:
+      type: string
+    required: true
+    description: Shared key for the list
+  get:
+    security:
+      - BearerAuth: []
+    summary: Gets a list
+    x-eov-operation-handler: list.entrypoint
+    operationId: getList
+    tags:
+      - lists
+    responses:
+      200:
+        $ref: "../lists/responses/list.response.yaml"
+      403:
+        $ref: "../base/responses/403.yaml"
+      404:
+        $ref: "../base/responses/404.yaml"
+      500:
+        $ref: "../base/responses/500.yaml"
+      502:
+        $ref: "../base/responses/502.yaml"
+  patch:
+    security:
+      - BearerAuth: []
+    summary: Updates a list in the name of a user
+    x-eov-operation-handler: list.entrypoint
+    operationId: updateList
+    tags:
+      - lists
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "schemas/list.yaml"
+    responses:
+      202:
+        $ref: "../lists/responses/list.response.yaml"
+      400:
+        $ref: "../base/responses/400.yaml"
+      403:
+        $ref: "../base/responses/403.yaml"
+      404:
+        $ref: "../base/responses/404.yaml"
+      500:
+        $ref: "../base/responses/500.yaml"

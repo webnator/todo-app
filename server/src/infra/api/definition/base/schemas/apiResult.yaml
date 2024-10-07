@@ -1,0 +1,18 @@
+type: object
+properties:
+  result:
+    type: object
+    properties:
+      code:
+        type: string
+        description: The unique code of the response
+        example: BACK40001
+      requestId:
+        type: string
+        description: The unique identifier for the request
+        format: uuid
+        example: 8c8ff55c-11f5-4b3c-8596-3d9831a8934d
+      message:
+        type: string
+        description: The response message in a human format
+        example: Request message response

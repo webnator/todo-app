@@ -1,0 +1,129 @@
+tasks:
+  summary: Endpoints to manage tasks
+  parameters:
+  - in: path
+    name: sharedKey
+    schema:
+      type: string
+    required: true
+    description: Shared key for the list
+  get:
+    security:
+      - BearerAuth: []
+    summary: Gets all tasks for a list
+    x-eov-operation-handler: task.entrypoint
+    operationId: getListTasks
+    tags:
+      - tasks
+    responses:
+      200:
+        $ref: "../tasks/responses/tasks.response.yaml"
+      403:
+        $ref: "../base/responses/403.yaml"
+      500:
+        $ref: "../base/responses/500.yaml"
+      502:
+        $ref: "../base/responses/502.yaml"
+  post:
+    security:
+      - BearerAuth: []
+    summary: Creates a new task in a list
+    x-eov-operation-handler: task.entrypoint
+    operationId: createNewTask
+    tags:
+      - tasks
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "schemas/task.yaml"
+              - required:
+                - title
+    responses:
+      201:
+        $ref: "../tasks/responses/task.response.yaml"
+      400:
+        $ref: "../base/responses/400.yaml"
+      403:
+        $ref: "../base/responses/403.yaml"
+      409:
+        $ref: "../base/responses/409.yaml"
+      500:
+        $ref: "../base/responses/500.yaml"
+
+task:
+  summary: Endpoints to manage a specific task
+  parameters:
+  - in: path
+    name: sharedKey
+    schema:
+      type: string
+    required: true
+    description: Shared key for the list
+  - in: path
+    name: taskId
+    schema:
+      type: integer
+    required: true
+    description: Unique id for the task
+  patch:
+    security:
+      - BearerAuth: []
+    summary: Updates a task in the name of a user
+    x-eov-operation-handler: task.entrypoint
+    operationId: updateTask
+    tags:
+      - tasks
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "schemas/task.yaml"
+    responses:
+      202:
+        $ref: "../tasks/responses/task.response.yaml"
+      400:
+        $ref: "../base/responses/400.yaml"
+      403:
+        $ref: "../base/responses/403.yaml"
+      404:
+        $ref: "../base/responses/404.yaml"
+      500:
+        $ref: "../base/responses/500.yaml"
+
+taskEntries:
+  summary: Endpoints to manage the historical entries for a task
+  parameters:
+  - in: path
+    name: sharedKey
+    schema:
+      type: string
+    required: true
+    description: Shared key for the list
+  - in: path
+    name: taskId
+    schema:
+      type: integer
+    required: true
+    description: Unique id for the task
+  get:
+    security:
+      - BearerAuth: []
+    summary: Gets all history for a task
+    x-eov-operation-handler: task.entrypoint
+    operationId: getTaskHistory
+    tags:
+      - tasks
+    responses:
+      200:
+        $ref: "../tasks/responses/tasksHistoryEntries.response.yaml"
+      403:
+        $ref: "../base/responses/403.yaml"
+      500:
+        $ref: "../base/responses/500.yaml"
+      502:
+        $ref: "../base/responses/502.yaml"
+  

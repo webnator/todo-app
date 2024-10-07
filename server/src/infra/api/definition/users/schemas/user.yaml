@@ -1,0 +1,22 @@
+type: object
+description: The user entity
+properties:
+  id:
+    type: number
+    readOnly: true
+  fullName:
+    type: string
+    description: The full name of the user
+    example: Williams Aguilera
+  code:
+    type: string
+    description: The unique code for the user to login with
+    minLength: 12
+    maxLength: 12
+    example: bca680a1c07e
+    readOnly: true
+  createdAt:
+    type: string
+    format: date-time
+    readOnly: true
+    

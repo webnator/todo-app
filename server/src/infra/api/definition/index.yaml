@@ -1,0 +1,32 @@
+---
+openapi: 3.0.1
+info:
+  title: Todo list
+  version: 1.464.1
+servers:
+- url: http://localhost:8080
+tags: []
+paths:
+  /public/health:
+    $ref: "./health.yaml#/health"
+  /public/login:
+    $ref: "./users/users.yaml#/login"
+  /public/users:
+    $ref: "./users/users.yaml#/publicUsers"
+  
+  /lists:
+    $ref: "./lists/lists.yaml#/lists"
+  /lists/{sharedKey}:
+    $ref: "./lists/lists.yaml#/list"
+  /lists/{sharedKey}/tasks:
+    $ref: "./tasks/tasks.yaml#/tasks"
+  /lists/{sharedKey}/tasks/{taskId}:
+    $ref: "./tasks/tasks.yaml#/task"
+  /lists/{sharedKey}/tasks/{taskId}/history-entries:
+    $ref: "./tasks/tasks.yaml#/taskEntries"
+  
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer

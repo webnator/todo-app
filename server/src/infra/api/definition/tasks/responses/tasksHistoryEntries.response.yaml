@@ -1,0 +1,15 @@
+description: Task historical entries retrieved correctly
+content:
+  application/json:
+    schema:
+      allOf:
+      - $ref: "../../base/schemas/apiResult.yaml"
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              taskHistoryEntries:
+                type: array
+                items:
+                  $ref: "../schemas/taskHistory.yaml"

@@ -1,0 +1,13 @@
+description: List retrieved correctly
+content:
+  application/json:
+    schema:
+      allOf:
+      - $ref: "../../base/schemas/apiResult.yaml"
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              list:
+                $ref: "../schemas/list.yaml"

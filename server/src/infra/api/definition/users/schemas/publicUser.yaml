@@ -1,0 +1,15 @@
+type: object
+description: The public user entity to be shared with other users
+properties:
+  id:
+    type: number
+    readOnly: true
+  fullName:
+    type: string
+    description: The full name of the user
+    example: Williams Aguilera
+  createdAt:
+    type: string
+    format: date-time
+    readOnly: true
+    

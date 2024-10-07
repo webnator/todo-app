@@ -1,0 +1,18 @@
+description: User retrieved correctly
+content:
+  application/json:
+    schema:
+      allOf:
+      - $ref: "../../base/schemas/apiResult.yaml"
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              token:
+                type: string
+                description: The bearer token for authentication of the user
+                example: 352985y0qihwt43b2tf6809p5b4d9735bt43cx59bn32m23dsy73rwfto
+              user:
+                $ref: "../schemas/user.yaml"
+                

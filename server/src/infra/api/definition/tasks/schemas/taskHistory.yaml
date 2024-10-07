@@ -1,0 +1,26 @@
+type: object
+description: The task history entity
+properties:
+  id:
+    type: number
+    readOnly: true
+  user:
+    $ref: "../../users/schemas/publicUser.yaml"
+    readOnly: true
+  from:
+    type: string
+    enum: [ 'PENDING', 'ONGOING', 'DONE' ]
+    description: The current status of the task
+    example: PENDING
+    readOnly: true
+  to:
+    type: string
+    enum: [ 'PENDING', 'ONGOING', 'DONE' ]
+    description: The current status of the task
+    example: ONGOING
+    readOnly: true
+  createdAt:
+    type: string
+    format: date-time
+    readOnly: true
+    

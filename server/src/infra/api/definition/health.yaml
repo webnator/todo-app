@@ -1,0 +1,15 @@
+health:
+  get:
+    tags:
+    - health
+    description: Checks the health of the service
+    operationId: healthCheck
+    responses:
+      '200':
+        $ref: "./base/responses/200.yaml"
+      '500':
+        $ref: "./base/responses/500.yaml"
+    x-rate-limit:
+      timeLimit: 10000
+      maxRequests: 1
+    x-eov-operation-handler: health.entrypoint

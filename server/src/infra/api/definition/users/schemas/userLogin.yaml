@@ -1,0 +1,10 @@
+type: object
+description: The user login entity
+properties:
+  code:
+    type: string
+    minLength: 12
+    maxLength: 12
+    description: The unique code for the user to login with
+    example: bca680a1c07e
+  

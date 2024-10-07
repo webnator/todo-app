@@ -1,0 +1,12 @@
+node_modules
+.env
+.env.development
+.env.production
+build
+.vscode
+coverage
+api.json
+.idea
+.history
+.turbo
+build-api
