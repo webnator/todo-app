@@ -17,7 +17,8 @@ const knexConfig: Knex.Config = {
   migrations: {
     tableName: 'system_db_migrations',
     extension: 'ts',
-    directory: __dirname + '/../infra/adapters/db/migrations'
+    directory: __dirname + '/../infra/adapters/db/migrations',
+    loadExtensions: ['.ts', '.js'],
   }
 };
 

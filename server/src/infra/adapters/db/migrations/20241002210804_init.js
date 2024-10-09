@@ -2,7 +2,7 @@ import { Knex } from "knex";
 import dbConfig from "../../../../config/db.config";
 import TaskStatus from "../../../../domain/Task/TaskStatus.enum";
 
-export async function up(knex: Knex): Promise<void> {
+export async function up(knex) {
   await knex.schema.createTable(dbConfig.TABLES.USER, (table) => {
     table.increments('id');
     table.string('full_name').notNullable();
@@ -40,7 +40,7 @@ export async function up(knex: Knex): Promise<void> {
   });
 }
 
-export async function down(knex: Knex): Promise<void> {
+export async function down(knex) {
   await knex.schema.dropTable(dbConfig.TABLES.TASK_STATUS_HISTORY);
   await knex.schema.dropTable(dbConfig.TABLES.TASK);
   await knex.schema.dropTable(dbConfig.TABLES.LIST);
